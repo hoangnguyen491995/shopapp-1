@@ -34,10 +34,9 @@
     Catalog
 </h1>
 <section style="display: flex; justify-content: space-around">
-    <c:forEach var="item" items="${catalog}"   >
+    <c:forEach var="item" items="${catalog}">
         <a href="catalog?catalogId=${item.catalogId}">${item.catalogName}
         </a>
-
     </c:forEach>
 </section>
 <aside style="display: flex;flex-direction: column" >
@@ -49,18 +48,13 @@
                     Tên sản Phẩm :
                     <span>${item.nameProduct}</span>
                 </p>
-                <img class="img" src="http://noithathoaphat.com.vn/product_images/m/325/GL327__71301_zoom.jpg" alt="hình ảnh">
+                <img class="img" src="${item.url}" alt="hình ảnh">
 
             </div>
             <p style="color:red">
                 Giá :
                 <span>${item.price} Vnđ</span>
             </p>
-
-                <%--<p style="max-width:200px">--%>
-                <%--Mô Tả :--%>
-                <%--<span class="description">${item.description}</span>--%>
-                <%--</p>--%>
 
         </div>
     </c:forEach>

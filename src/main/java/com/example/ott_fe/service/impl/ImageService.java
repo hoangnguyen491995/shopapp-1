@@ -4,9 +4,10 @@ import com.example.ott_fe.entity.Image;
 import com.example.ott_fe.repository.ImageRepository;
 import com.example.ott_fe.service.IImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ImageService implements IImageService{
     @Autowired
     private ImageRepository imageRepository ;

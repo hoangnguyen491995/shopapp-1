@@ -1,18 +1,17 @@
 package com.example.ott_fe.service;
 
-import com.example.ott_fe.entity.Catalog;
 import com.example.ott_fe.entity.Image;
 
 import java.util.List;
 
-public interface IImage {
+public interface IImageService {
 
-    Catalog addImage(Image image) ;
+    Image addImage(Image image) ;
 
-    Catalog updateImage(Image image) ;
+    Image updateImage(Image image) ;
 
     boolean deleteImage(long Image_Id) ;
 
-    List<Catalog> getAllImage() ;
+    List<Image> getAllImage() ;
 
 }
