@@ -31,7 +31,6 @@ public class HomeController {
     @GetMapping("home")
     public String home(Model model){
         model.addAttribute("products",productService.getAllProduct()) ;
-        model.addAttribute("user",userService.getAllUser()) ;
         model.addAttribute("image",imageService.getAllImage()) ;
         return "home";
     }

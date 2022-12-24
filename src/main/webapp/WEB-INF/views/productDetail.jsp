@@ -6,10 +6,12 @@
     <title>ShopApp</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <header style="Width: 100%;height:100px;background-color:rgb(219, 189, 20);font-size:20px">
-    <div class="nav__list">
+    <div class="nav__list"  style="color:#007bff">
         <div class="nav_div_link">
             <a class="nav__link active-link" href="/home" onclick="route()">TRANG CHỦ</a>
         </div>
@@ -30,33 +32,108 @@
         </div>
     </div>
 </header>
+ <main style="display: flex;flex-direction: column; justify-content: center ; align-items: center ; margin: 20px">
+     <h1>Chi tiết sản phẩm</h1>
+     <aside style="display: flex;flex-direction: column" >
+         <c:forEach var="item" items="${products}">
+             <div class="productDetail">
 
-<aside style="display: flex;flex-direction: column" >
-    <c:forEach var="item" items="${products}">
-        <div class="productDetail">
-            <img class="imgDetail" src="${item.url}" alt="hình ảnh">
-            <span style="font-size: 20px ; margin: 10px"> Tên sản phẩm : ${item.nameProduct}</span>
-                <span>Giá bán : ${item.price} Vnđ</span>
-                <p style="max-width:200px">
-                <span class="description">Mô tả cho sản phẩm : ${item.description}</span>
-                </p>
-            <div style="display: flex; justify-content: space-evenly; align-items: center ; width: 100% ; margin-top: 10px">
-                <button >
-                    <a style="color:red" href="product">
-                        Quay lại danh sách sản phẩm
-                    </a>
-                </button>
-                <button class="addCart">Thêm vào giỏ hàng
-                </button>
-            </div>
+                 <div style="display: flex; justify-content: space-evenly; align-items: center ; margin: 30px">
+                     <div style="display: flex;flex-direction: column; justify-content:space-between ">
+                         <div>
+                             <h2  style="font-size: 20px ; margin: 50px 0 0 50px"> Tên sản phẩm : ${item.nameProduct}</h2>
+                             <h3 style="margin: 0 0 0 50px">Giá bán : ${item.price} Vnđ</h3>
+                         </div>
+
+                         <h5 style="margin: 50px 0 0 50px"  class="description">Mô tả cho sản phẩm : ${item.description}</h5>
+                         <button style="height: 35px; width: 250px ;margin: 0 0 0 50px" >
+                             <a style="color:red" href="product">
+                                 Quay lại danh sách sản phẩm
+                             </a>
+                         </button>
+                         <button style="height: 35px; width: 250px ;margin: 0 0 0 50px" class="addCart">Thêm vào giỏ hàng
+                         </button>
+                     </div>
+
+                 </div>
+                 <img class="imgDetail" src="${item.url}" alt="hình ảnh">
+             </div>
+         </c:forEach>
+     </aside>
+ </main>
+
+</div>
+
+    <footer class="text-center text-white" style="background-color: #f1f1f1;width: 100%">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a
+                        class="btn btn-link btn-floating btn-lg  m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class=" text-dark fab fa-facebook-f"></i
+                ></a>
+
+                <!-- Twitter -->
+                <a
+                        class="btn btn-link btn-floating btn-lg text-dark m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class="fab fa-twitter"></i
+                ></a>
+
+                <!-- Google -->
+                <a
+                        class="btn btn-link btn-floating btn-lg text-dark m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class="fab fa-google"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a
+                        class="btn btn-link btn-floating btn-lg text-dark m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class="fab fa-instagram"></i
+                ></a>
+
+                <!-- Linkedin -->
+                <a
+                        class="btn btn-link btn-floating btn-lg text-dark m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class="fab fa-linkedin"></i
+                ></a>
+                <!-- Github -->
+                <a
+                        class="btn btn-link btn-floating btn-lg text-dark m-1"
+                        href="#!"
+                        role="button"
+                        data-mdb-ripple-color="dark"
+                ><i class="fab fa-github"></i
+                ></a>
+            </section>
+            <!-- Section: Social media -->
         </div>
-    </c:forEach>
-</aside>
+        <!-- Grid container -->
 
-<footer style="Width: 100%;height:100px;background-color:rgb(236, 226, 170);font-size:20px">
-    footer
-</footer>
-
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">shopApp.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+<!-- End of .container -->
 <!--=============== MAIN JS ===============-->
 <script src="../js/main.js"></script>
 <script

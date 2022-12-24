@@ -1,32 +1,26 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: hoangnd3
-  Date: 11/24/2022
-  Time: 11:10 AM
+  Date: 12/24/2022
+  Time: 11:03 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Danh Sách Email Nhận Tin</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Quản lí sản phẩm </title>
     <style>
-        body{
+        a{
+            text-decoration : none;
+        }
+        body {
             display: flex;
             justify-content: space-evenly;
         }
-        .admin_dashboard{
+
+        .admin_dashboard {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -34,15 +28,11 @@
             background-color: #ebef6d;
             padding: 20px;
         }
-        .item_dashboard{
+
+        .item_dashboard {
             margin-top: 20px;
         }
-        .admin_content {
-            color: #566787;
-            background: #f5f5f5;
-            font-family: 'Varela Round', sans-serif;
-            font-size: 13px;
-        }
+
         .table-responsive {
             margin: 30px 0;
         }
@@ -261,50 +251,31 @@
         .modal form label {
             font-weight: normal;
         }
-        th{
-            width: 300px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
     </style>
-    <script>
-        $(document).ready(function () {
-         
-            // Select/Deselect checkboxes
-            var checkbox = $('table tbody input[type="checkbox"]');
-            $("#selectAll").click(function () {
-                if (this.checked) {
-                    checkbox.each(function () {
-                        this.checked = true;
-                    });
-                } else {
-                    checkbox.each(function () {
-                        this.checked = false;
-                    });
-                }
-            });
-            checkbox.click(function () {
-                if (!this.checked) {
-                    $("#selectAll").prop("checked", false);
-                }
-            });
-        });
-    </script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+<script>
+
+</script>
 <div class="admin_dashboard">
     <div class="item_dashboard">
         <img src="../../../assets/img-icon/person-icon.png" alt="">
-       <br> 
-        <input style="outline: none;border:none;background-color:#ebef6d ;" id="myAccount_admin_receive">  
-   </input>         
-   </div >
+        <br>
+        <input style="outline: none;border:none;background-color:#ebef6d ;" id="myAccount_admin_receive"/>
+    </div >
     <h3 class="item_dashboard">Bảng Điều Khiển</h3>
-    <a class="item_dashboard" href="/admin/internal"> Người Dùng Nội Bộ </a>
-    <a class="item_dashboard" href="/admin/register"> Người Dùng Đăng Kí </a>
-    <a class="item_dashboard" href="/admin/contact"> Thông Tin Liên hệ </a>
-    <a class="item_dashboard" href="/admin/receive"> Danh Sách Email Nhận Tin </a>
+    <a class="item_dashboard" href="/admin/product"> Sản phẩm </a>
+    <a class="item_dashboard" href="/admin/user"> Người Dùng  </a>
+    <a class="item_dashboard" href="/admin/catalog"> Danh mục sản phẩm </a>
     <p class="logout_internal item_dashboard "> Đăng xuất</p>
 </div>
 
@@ -314,78 +285,131 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Quản Lí <b> Danh Sách Email Nhận Tin</b></h2>
+                        <h2>Quản lí <b>sản phẩm</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm</span></a>
                     </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Hành Động</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá bán</th>
+                    <th>Mô tả</th>
+                    <th>Hành động </th>
                 </tr>
                 </thead>
-                <tbody class="body_table">
+                 <c:forEach var="item" items="${products}">
+
+                <tbody >
+                <tr>
+                    <td> ${item.nameProduct}</td>
+                    <td> ${item.price} </td>
+                    <td> ${item.description}</td>
+                    <td>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                </tr>
                 </tbody>
+                 </c:forEach>
             </table>
         </div>
     </div>
 </div>
-<!-- ==========detail========== -->
-<div id="editEmployeeModal_detail_receive" class="modal fade_detail_receive">
+<!-- Edit Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <form>
-          <div class="modal-header"></div>
-          <div class="modal-body">
-            <div class="form-group">
-                <label>ID Đăng Kí Nhận Tin: </label>
-                <label id="detailId_receive"></label>
-              </div>
-            <div class="form-group">
-              <label>email: </label>
-              <label id="detailsEmail_receive"   for=""></label>
-            </div>
-            <div class="form-group">
-              <label>Thời Gian Đăng Kí Nhận Tin:</label>
-              <label  id="detailDateCreate_receive" for=""></label>
-            </div>    
-          </div>
-          <div class="modal-footer">
-            <input
-              type="button"
-              class="btn btn-default"
-              data-dismiss="modal"
-              value="Quay Lại"
-            />
-          </div>
-        </form>
-      </div>
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
-
-
-
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous">
-</script>
-<script src="/js/check-user-type.js"></script>
-<script src="../js/receive-email.js"></script>
+</div>
+<!-- Edit Modal HTML -->
+<div id="editEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Cập nhập thông tin sản phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên sản phẩm</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá bán</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Url</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Quay lại">
+                    <input type="submit" class="btn btn-info" value="Lưu">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Xóa sản phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa sản phẩm này không?</p>
+                    <p class="text-warning"><small>
+                        Hành động này không thể được hoàn tác.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-

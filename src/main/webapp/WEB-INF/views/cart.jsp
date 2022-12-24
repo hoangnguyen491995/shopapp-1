@@ -11,7 +11,7 @@
 </head>
 <body>
 <header style="Width: 100%;height:100px;background-color:rgb(219, 189, 20);font-size:20px">
-    <div class="nav__list">
+    <div class="nav__list"  style="color:#007bff">
         <div class="nav_div_link">
             <a class="nav__link active-link" href="/home" onclick="route()">TRANG CHỦ</a>
         </div>
@@ -43,7 +43,6 @@
             <div class="col-md-8">
                 <div class="p-2">
                     <h4>Giỏ Hàng </h4>
-                    <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sắp xếp theo:</span><span class="mr-1 font-weight-bold">Giá</span><i class="fa fa-angle-down"></i></div>
                 </div>
                 <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
                     <div class="mr-1"><img class="rounded" src="https://i.imgur.com/XiFJkhI.jpg" width="70"></div>
@@ -62,9 +61,75 @@
 
 </aside>
 
-<%--<footer style="Width: 100%;height:100px;background-color:rgb(236, 226, 170);font-size:20px">--%>
-    <%--footer--%>
-<%--</footer>--%>
+<footer class="text-center text-white" style="background-color: #f1f1f1;width: 100%">
+    <!-- Grid container -->
+    <div class="container pt-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a
+                    class="btn btn-link btn-floating btn-lg  m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class=" text-dark fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i
+            ></a>
+            <!-- Github -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">shopApp.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 
 <!--=============== MAIN JS ===============-->
 <script src="../js/main.js"></script>

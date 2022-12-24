@@ -4,12 +4,14 @@
 <head>
     <title>ShopApp</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body class="align">
 
 <header style="Width: 100%;height:100px;background-color:rgb(219, 189, 20);font-size:20px">
-    <div class="nav__list" style="display: flex">
+    <div class="nav__list" style="display: flex;color:#007bff" >
         <div class="nav_div_link">
             <a class="nav__link active-link" href="/home" onclick="route()">TRANG CHỦ</a>
         </div>
@@ -36,14 +38,12 @@
     <form method="POST" class="form login">
 
         <div class="form__field">
-            <label for="login__username"><svg class="icon">
                 <use xlink:href="#icon-user"></use>
             </svg><span class="hidden">Email</span></label>
             <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Email" required>
         </div>
 
         <div class="form__field">
-            <label for="login__password"><svg class="icon">
                 <use xlink:href="#icon-lock"></use>
             </svg><span class="hidden">Mật Khẩu</span></label>
             <input id="login__password" type="password" name="password" class="form__input" placeholder="Mật khẩu" required>
@@ -75,27 +75,22 @@
     <form  method="POST" class="form login">
 
         <div class="form__field">
-            <label for="login__username"><svg class="icon">        
             </svg><span class="hidden">Tên đăng nhập</span></label>
             <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Tên đăng nhập" required>
         </div>
         <div class="form__field">
-            <label for="login__username"><svg class="icon">      
             </svg><span class="hidden">Email</span></label>
             <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Email" required>
         </div>
         <div class="form__field">
-            <label for="login__username"><svg class="icon"> 
             </svg><span class="hidden">Số điện thoại</span></label>
             <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Số điện thoại" required>
         </div>
         <div class="form__field">
-            <label for="login__password"><svg class="icon"> 
             </svg><span class="hidden">Mật Khẩu</span></label>
             <input id="login__password" type="password" name="password" class="form__input" placeholder="Mật khẩu" required>
         </div>
         <div class="form__field">
-            <label for="login__password"><svg class="icon">         
             </svg><span class="hidden">Mật Khẩu</span></label>
             <input id="login__password" type="password" name="password" class="form__input" placeholder="Nhập lại Mật khẩu" required>
         </div>
@@ -106,8 +101,74 @@
         <span id="registerHandle" style="color: rgb(243, 60, 60);">Đăng Nhập</span></p>
     </form>
 </div>
-<footer style="Width: 100%;height:100px;background-color:rgb(236, 226, 170);font-size:20px">
-    footer
+<footer class="text-center text-white" style="background-color: #f1f1f1;width: 100%">
+    <!-- Grid container -->
+    <div class="container pt-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a
+                    class="btn btn-link btn-floating btn-lg  m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class=" text-dark fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i
+            ></a>
+            <!-- Github -->
+            <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">shopApp.com</a>
+    </div>
+    <!-- Copyright -->
 </footer>
 <!--=============== MAIN JS ===============-->
 <script src="../js/main.js"></script>

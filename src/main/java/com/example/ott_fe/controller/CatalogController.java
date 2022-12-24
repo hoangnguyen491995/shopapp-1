@@ -11,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +19,8 @@ import java.util.List;
 public class CatalogController {
     @Autowired
     IProductService productService ;
+    @Autowired
+    ICatalogService catalogService ;
 
     @GetMapping("/catalog")
     public String catalog(Model model,@RequestParam(name = "catalogId") String catalogId ){
@@ -36,11 +34,10 @@ public class CatalogController {
               }
           }
         model.addAttribute("products",listbyCatagory) ;
-        return "catalog" ;
+        model.addAttribute("catalog",catalogService.getAllCatalog()) ;
+
+        return "/catalog" ;
 
     }
-//    public String catalog(Model model,@RequestParam(categoryID="categoryID",required = false) long categoryID){
-//        model.addAttribute("catalog",productService.getbyCatalogIDContaining(categoryID)) ;
-//        return "catalog";
-//    }
+
 }
