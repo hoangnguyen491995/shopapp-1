@@ -45,4 +45,7 @@ public class User {
     private Date created_date;
 
     private Date updated_date;
+
+    public void put(String mesage, String tài_khoản_không_hợp_lệ) {
+    }
 }

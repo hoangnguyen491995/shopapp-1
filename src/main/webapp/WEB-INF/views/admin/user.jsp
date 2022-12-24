@@ -285,10 +285,10 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Quản lí <b>Người dùng</b></h2>
+                        <h2>Quản lí <b>người dùng</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm</span></a>
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm người dùng</span></a>
                     </div>
                 </div>
             </div>
@@ -337,17 +337,24 @@
                         <input type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
-                    </div>
-                    <div class="form-group">
                         <label>Phone</label>
                         <input type="text" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                        <label>Mật khẩu</label>
+                        <input type="password" class="form-control" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Nhập lại mật khẩu</label>
+                        <input type="password" class="form-control" required>
+
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Quay lại">
+                    <input type="submit" class="btn btn-success" value="Thêm">
                 </div>
             </form>
         </div>
@@ -359,25 +366,29 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Cập nhập thông tin sản phẩm</h4>
+                    <h4 class="modal-title">Cập nhập thông tin người dùng</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Tên sản phẩm</label>
+                        <label>Tên người dùng</label>
                         <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Giá bán</label>
+                        <label>Email</label>
                         <input type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Mô tả</label>
-                        <textarea class="form-control" required></textarea>
+                        <label>Số điện thoại</label>
+                        <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Url</label>
-                        <input type="text" class="form-control" required>
+                        <label>Mật khẩu</label>
+                        <input type="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label> Nhập lại mật khẩu</label>
+                        <input type="password" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -394,17 +405,17 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Xóa sản phẩm</h4>
+                    <h4 class="modal-title">Xóa người dùng</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn muốn xóa sản phẩm này không?</p>
+                    <p>Bạn có chắc chắn muốn xóa người dùng này không?</p>
                     <p class="text-warning"><small>
                         Hành động này không thể được hoàn tác.</small></p>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Quay lại">
+                    <input type="submit" class="btn btn-danger" value="Xóa">
                 </div>
             </form>
         </div>

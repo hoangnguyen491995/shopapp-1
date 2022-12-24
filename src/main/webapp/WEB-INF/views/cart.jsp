@@ -25,7 +25,7 @@
             <a class="nav__link " onclick="route()">LIÊN HỆ</a>
         </div>
         <div class="nav_div_link " style="border:none ;">
-            <a class="header_myAccount nav__link" href="/myAccount" onclick="route()">
+            <a class="header_myAccount nav__link" href="/login" onclick="route()">
                 MyAccount
             </a>
             <img class="nav__link__img" src="../assets/img-icon/person-not-login-icon.png" alt="">

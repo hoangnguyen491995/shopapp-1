@@ -50,10 +50,12 @@ public class Product {
     private int catalogId;
 
     private String url;
+    private String insurance ;
 
     private Date created_date;
 
     private Date updated_date;
+
 
     public int getPrice() {
         return price;

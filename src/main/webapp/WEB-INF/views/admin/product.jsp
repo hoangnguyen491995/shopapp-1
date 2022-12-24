@@ -325,25 +325,29 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
+                    <h4 class="modal-title">Thêm sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>Tên sản phẩm</label>
                         <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Giá bán</label>
                         <input type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Mô tả</label>
                         <textarea class="form-control" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Phone</label>
+                        <label>Đường dẫn liên kết đến hình ảnh</label>
                         <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Danh mục</label>
+                        <input type="number" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,7 @@
 <body class="align">
 
 <header style="Width: 100%;height:100px;background-color:rgb(219, 189, 20);font-size:20px">
-    <div class="nav__list" style="display: flex;color:#007bff" >
+    <div class="nav__list" style="display: flex;color:#007bff " >
         <div class="nav_div_link">
             <a class="nav__link active-link" href="/home" onclick="route()">TRANG CHỦ</a>
         </div>
@@ -25,37 +28,28 @@
             <a class="nav__link "  onclick="route()">LIÊN HỆ</a>
         </div>
         <div class="nav_div_link " style="border:none ;">
-            <a href="/myAccount" onclick="route()">
+            <a href="/login" onclick="route()">
                 MyAccount
             </a>
             <img class="nav__link__img" src="../assets/img-icon/person-not-login-icon.png" alt="">
         </div>
     </div>
 </header>
+
  <!-- form đăng nhập -->
-<div id="login" class="grid" style="margin: 100px">
+<h3>Đăng nhập</h3>
 
-    <form method="POST" class="form login">
+<form method="post" action="${pageContext.request.contextPath}/checkLogin">
 
-        <div class="form__field">
-                <use xlink:href="#icon-user"></use>
-            </svg><span class="hidden">Email</span></label>
-            <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Email" required>
-        </div>
+    <input name="email" type="text" class="form-control" placeholder="email"
+           autofocus="true"/>
 
-        <div class="form__field">
-                <use xlink:href="#icon-lock"></use>
-            </svg><span class="hidden">Mật Khẩu</span></label>
-            <input id="login__password" type="password" name="password" class="form__input" placeholder="Mật khẩu" required>
-        </div>
+    <input name="password" type="password" class="form-control" placeholder="Password"/>
 
-        <div class="form__field">
-            <input type="submit" value="Đăng Nhập">
-        </div>
-         <p style="color: blueviolet;">Bạn chưa có tài khoản ?
-             <span id="loginHandle"  style="color: rgb(243, 60, 60);">Đăng Ký</span></p>
-    </form>
-</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+
+</form>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" class="icons">
     <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">

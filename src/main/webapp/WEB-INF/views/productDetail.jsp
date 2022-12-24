@@ -25,7 +25,7 @@
             <a class="nav__link " onclick="route()">LIÊN HỆ</a>
         </div>
         <div class="nav_div_link " style="border:none ;">
-            <a class="header_myAccount nav__link" href="/myAccount" onclick="route()">
+            <a class="header_myAccount nav__link" href="/login" onclick="route()">
                 MyAccount
             </a>
             <img class="nav__link__img" src="../assets/img-icon/person-not-login-icon.png" alt="">
@@ -44,7 +44,7 @@
                              <h2  style="font-size: 20px ; margin: 50px 0 0 50px"> Tên sản phẩm : ${item.nameProduct}</h2>
                              <h3 style="margin: 0 0 0 50px">Giá bán : ${item.price} Vnđ</h3>
                          </div>
-
+                          <h4 style="margin: 0 0 0 50px" >Bảo hành : ${item.insurance}</h4>
                          <h5 style="margin: 50px 0 0 50px"  class="description">Mô tả cho sản phẩm : ${item.description}</h5>
                          <button style="height: 35px; width: 250px ;margin: 0 0 0 50px" >
                              <a style="color:red" href="product">
