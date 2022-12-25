@@ -59,7 +59,7 @@ public class UserService implements IUserService {
     }
 
    @Override
-    public boolean checkLogin ( String email,String password){
+    public boolean checkLogin( String email,String password){
         Optional<User> optionalUser = findById(email) ;
         if(optionalUser.isPresent()&& optionalUser.get().getPassWord().equals(password)){
               return true ;

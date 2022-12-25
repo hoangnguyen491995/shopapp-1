@@ -2,6 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"--%>
+         <%--pageEncoding="ISO-8859-1" isELIgnored="false"%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +40,6 @@
 
  <!-- form đăng nhập -->
 <h3>Đăng nhập</h3>
-
 <form method="post" action="${pageContext.request.contextPath}/checkLogin">
 
     <input name="email" type="text" class="form-control" placeholder="email"

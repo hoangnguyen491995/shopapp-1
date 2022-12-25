@@ -51,16 +51,15 @@ public class HomeController {
     }
 
     @PostMapping("/checkLogin")
-    public String checkLogin(Model model,@RequestParam("email")String email ,@RequestParam ("password") String password){
-
+    public String checkLogin(Model model,@RequestParam("email")String email ,@RequestParam ("password") String password,HttpSession session){
         if(userService.checkLogin(email,password)){
+            session.setAttribute("email",email);
             model.addAttribute("products",productService.getAllProduct()) ;
             model.addAttribute("catalog",catalogService.getAllCatalog()) ;
             System.out.println("đăng nhập thành công");
             return  "product" ;
         }else {
             System.out.println("đăng nhập thất bại");
-
         }
         return  "login" ;
     }
