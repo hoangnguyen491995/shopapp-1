@@ -22,10 +22,7 @@ public class Catalog {
 
     private String catalogName ;
 
-//    @OneToMany(mappedBy = "catalog")
-//    @JsonManagedReference
-//    private List<Product> products;
-    private Date created_date;
+    @OneToMany(mappedBy = "catalog")
+    private List<Product> products;
 
-    private Date updated_date;
 }

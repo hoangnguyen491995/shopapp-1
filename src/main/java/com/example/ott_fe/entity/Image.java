@@ -13,24 +13,18 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-public class Image  {
+public class Image extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Image_Id;
+    private long imageId;
 
-    private String Image_Name;
+    private String name;
 
     private String url;
 
     @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "Id", nullable = false)
+    @JoinColumn(name = "productId", nullable = false)
     private Product product;
-
-    private Date created_date;
-
-    private Date updated_date;
-
 
 }

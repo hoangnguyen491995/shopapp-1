@@ -1,40 +1,52 @@
 package com.example.ott_fe.controller;
 
 import com.example.ott_fe.entity.Product;
+import com.example.ott_fe.entity.User;
 import com.example.ott_fe.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    IProductService productService ;
+    IProductService productService;
 
-   @GetMapping("/list")
-   public List<Product> list(Model model){
-       model.addAttribute("products",productService.getAllProduct()) ;
-       return productService.getAllProduct();
-   }
-
-    @PostMapping("/add")
-    public Product addProduct(@RequestBody Product product){
-        return productService.addProduct(product) ;
+    @GetMapping("/list")
+    public List<Product> list(Model model) {
+        model.addAttribute("products", productService.getAllProduct());
+        return productService.getAllProduct();
     }
 
-  // sửa theo ID
+    @GetMapping("/add")
+    public String addProductView(Model model) {
+        model.addAttribute("product", new Product());
+        return "admin/product";
+
+    }
+
+    @PostMapping("/add")
+    public String addProduct(@ModelAttribute("product") Product product) {
+
+        productService.addProduct(product);
+        return "redirect:/admin/product";
+    }
+
+    // sửa theo ID
     @PutMapping("/update")
-    public Product updateProduct(@RequestBody Product product){
-        return productService.updateProduct(product) ;
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
     }
 
     @DeleteMapping("/delete")
-    public Boolean deleteProduct(@RequestBody String id ){
-        return productService.deleteProduct(Long.parseLong(id)) ;
+    public String deleteProduct(@RequestBody Long id) {
+        productService.deleteProduct(id);
+        return "thang";
     }
 
 }

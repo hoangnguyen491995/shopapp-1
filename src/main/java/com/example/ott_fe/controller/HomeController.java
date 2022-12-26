@@ -22,77 +22,37 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    IProductService productService ;
+    IProductService productService;
     @Autowired
-    IUserService userService ;
+    IUserService userService;
     @Autowired
-    IImageService imageService ;
+    IImageService imageService;
     @Autowired
-    ICatalogService catalogService ;
-    @GetMapping("home")
-    public String home(Model model){
-        model.addAttribute("products",productService.getAllProduct()) ;
-        model.addAttribute("image",imageService.getAllImage()) ;
-        return "home";
-    }
+    ICatalogService catalogService;
 
 
     @GetMapping("/product")
-    public String product(Model model){
-        model.addAttribute("products",productService.getAllProduct()) ;
-        model.addAttribute("catalog",catalogService.getAllCatalog()) ;
+    public String product(Model model) {
+        model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("catalog", catalogService.getAllCatalog());
         return "product";
     }
-//=========login=========
-    @GetMapping("/login")
-    public String showLogin(ModelMap modelMap){
-        modelMap.put("user" , new User() ) ;
-        return "login";
-    }
 
-    @PostMapping("/checkLogin")
-    public String checkLogin(Model model,@RequestParam("email")String email ,@RequestParam ("password") String password,HttpSession session){
-        if(userService.checkLogin(email,password)){
-            session.setAttribute("email",email);
-            model.addAttribute("products",productService.getAllProduct()) ;
-            model.addAttribute("catalog",catalogService.getAllCatalog()) ;
-            System.out.println("đăng nhập thành công");
-            return  "product" ;
-        }else {
-            System.out.println("đăng nhập thất bại");
-        }
-        return  "login" ;
-    }
+    @GetMapping("/productDetail")
+    public String productDetail(Model model, @RequestParam(name = "productId") String productId) {
 
-//==========logout==========
-    @GetMapping("logout")
-     public String logout( HttpSession session){
-        session.removeAttribute("email");
-        session.removeAttribute("password");
-
-        return "login" ;
-     }
-
-    @GetMapping("/cart")
-    public String cart(){
-        return "cart";
-    }
-
-      @GetMapping("/productDetail")
-          public String productDetail(Model model, @RequestParam(name = "productId") String productId){
-
-           System.out.println(productId);
-          List<Product> list = productService.getAllProduct() ;
-          List<Product>  productDetail = new ArrayList<>() ;
-            for(int i=0;i<list.size(); i++){
+        System.out.println(productId);
+        List<Product> list = productService.getAllProduct();
+        List<Product> productDetail = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
             int productID1 = Integer.parseInt(productId);
 
-            if(list.get(i).getProductId() ==productID1 ){
-                productDetail.add(list.get(i)) ;
+            if (list.get(i).getProductId() == productID1) {
+                productDetail.add(list.get(i));
             }
         }
 
-        model.addAttribute("products",productDetail) ;
-        return "productDetail" ;
+        model.addAttribute("products", productDetail);
+        return "productDetail";
     }
 }

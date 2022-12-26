@@ -1,13 +1,10 @@
 package com.example.ott_fe.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +13,8 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+@EqualsAndHashCode(callSuper = true)
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,38 +25,19 @@ public class Product {
     private String description;
 
     private int price;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "Catalog_Id", nullable = false)
-//    @JsonBackReference
-//    private Catalog catalog;
 
-    @OneToMany(mappedBy = "product")
-    @JsonManagedReference
-    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "catalogId", nullable = false)
+    private Catalog catalog;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Image> images;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(
-            name = "Orders_product",
-            joinColumns = {@JoinColumn(name = "order_id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id")}
-    )
-
-    Set<Orders> orders = new HashSet<>();
-
-    private int catalogId;
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
+    @ToString.Exclude
+    Set<Cart> carts = new HashSet<>();
 
     private String url;
-    private String insurance ;
-
-    private Date created_date;
-
-    private Date updated_date;
-
-
-    public int getPrice() {
-        return price;
-    }
+    private String insurance;
 
 }

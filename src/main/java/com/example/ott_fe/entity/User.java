@@ -3,10 +3,10 @@ package com.example.ott_fe.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,36 +15,37 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@EqualsAndHashCode(callSuper = true)
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long User_Id;
+    private long userId;
 
-    private String userName;
+    private String username;
 
     private String phone;
 
     private String email;
 
-    private String passWord;
+    private String password;
+    @Transient
+    private String passwordConfirm;
 
     @OneToMany()
     @JsonIgnore
-    @JoinColumn(name="userId")
-    private List<Orders> orders;
+    @JoinColumn(name = "userId")
+    private List<Cart> carts;
 
-//    @ManyToMany(cascade = { CascadeType.ALL})
-//    @JoinTable(
-//            name = "User_Role",
-//            joinColumns = { @JoinColumn(name = "user_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "role_id") }
-//    )
-//    Set<Role> roles = new HashSet<>();
-
-    private Date created_date;
-
-    private Date updated_date;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "userRole",
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "roleId")}
+    )
+    @EqualsAndHashCode.Exclude
+    @JsonIgnore
+    Set<Role> roles = new HashSet<>();
 
     public void put(String mesage, String tài_khoản_không_hợp_lệ) {
     }

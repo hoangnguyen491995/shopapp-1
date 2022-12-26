@@ -27,17 +27,21 @@
              <a class="nav__link " onclick="route()">LIÊN HỆ</a>
          </div>
          <div class="nav_div_link " style="border:none ;">
-             <a class="header_myAccount nav__link" href="/login" onclick="route()">
-                 MyAccount
-                </a>
+                 ${pageContext.request.userPrincipal.name}
                 <img class="nav__link__img" src="../assets/img-icon/person-not-login-icon.png" alt="">
          </div>
          <div class="nav_div_link">
              <a class="nav__link " onclick="route()" href="/cart">Giỏ hàng</a>
          </div>
-         <a href="logout">
-             logout
-         </a>
+
+         <c:if test="${pageContext.request.userPrincipal.name != null}">
+                <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+
+                <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a>
+
+            </c:if>
      </div>
  </header>
 
@@ -57,7 +61,7 @@
                <a style="color:red" href="productDetail?productId=${item.productId}">
                    Xem chi tiết
                </a>
-               <button class="addCart">Thêm vào giỏ hàng
+               <button  class="addCart"><a href="cart/add-product?productId=${item.productId}">Thêm vào giỏ hàng</a>
                </button>
            </div>
       </div>

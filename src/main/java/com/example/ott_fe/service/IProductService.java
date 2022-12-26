@@ -7,13 +7,16 @@ import java.util.List;
 
 public interface IProductService {
 
-   Product addProduct(Product product) ;
+    Product getProductById(Long id);
 
-    Product updateProduct(Product product) ;
+    Product addProduct(Product product);
 
-   boolean deleteProduct(long Product_Id) ;
+    Product updateProduct(Product product);
 
-    List<Product> getAllProduct() ;
-  List<Product>  getbyCatalogIDContaining(long catalogId ) ;
+    void deleteProduct(Long productId);
+
+    List<Product> getAllProduct();
+
+    List<Product> getbyCatalogIDContaining(long catalogId);
 
 }

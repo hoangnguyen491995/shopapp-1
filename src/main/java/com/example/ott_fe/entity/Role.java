@@ -1,8 +1,6 @@
 package com.example.ott_fe.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,16 +11,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Role")
-public class Role {
+@EqualsAndHashCode(callSuper = true)
+public class Role extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Role_Id;
+    private long roleId;
 
-    private String Role_Name;
+    private String name;
 
 
-//    @ManyToMany(mappedBy = "roles")
-//    private Set<User> users = new HashSet<>();
+    @ManyToMany(mappedBy = "roles")
+    @ToString.Exclude
+    private Set<User> users = new HashSet<>();
 
 }
