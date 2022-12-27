@@ -268,7 +268,7 @@
 </script>
 <div class="admin_dashboard">
     <div class="item_dashboard">
-        <img src="../../../assets/img-icon/person-icon.png" alt="">
+        <img src="../../assets/img-icon/person-icon.png" alt="">
         <br>
         <input style="outline: none;border:none;background-color:#ebef6d ;" id="myAccount_admin_receive"/>
     </div >
@@ -304,7 +304,7 @@
                 <c:forEach var="item" items="${user}">
                     <tbody >
                     <tr>
-                        <td> ${item.userName}</td>
+                        <td> ${item.username}</td>
                         <td> ${item.phone} </td>
                         <td> ${item.email}</td>
                         <td>
