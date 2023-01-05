@@ -1,9 +1,11 @@
 package com.example.ott_fe.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +17,7 @@ public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long productId;
+    private long id;
 
     private String nameProduct;
 
@@ -27,6 +29,11 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "catalogId", nullable = false)
     private Catalog catalog;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "productId")
+    private List<OrderDetail> orderDetails;
+
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 //    private List<Image> images;
 
@@ -37,12 +44,5 @@ public class Product extends BaseEntity {
     private String url;
 
     private String insurance;
-
-    public Product(long productId){
-        this.productId=productId;
-}
-
-
-
 
 }

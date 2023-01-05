@@ -49,7 +49,7 @@ public class HomeController {
 
         for (int i = 0; i < list.size(); i++) {
             int productID1 = Integer.parseInt(productId);
-            if (list.get(i).getProductId() == productID1) {
+            if (list.get(i).getId() == productID1) {
                 productDetail.add(list.get(i));
             }
         }

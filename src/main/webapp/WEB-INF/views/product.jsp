@@ -579,10 +579,10 @@
                 <span>${item.price} Vnđ</span>
             </button>
             <div style="display: flex; justify-content: space-evenly; align-items: center ; width: 100% ; margin-top: 10px">
-                <a style="color:red" href="productDetail?productId=${item.productId}">
+                <a style="color:red" href="productDetail?productId=${item.id}">
                     Xem chi tiết
                 </a>
-                <button class="addCart"><a href="cart/add-product?productId=${item.productId}">Thêm vào giỏ hàng</a>
+                <button class="addCart"><a href="cart/add-product?productId=${item.id}">Thêm vào giỏ hàng</a>
                 </button>
             </div>
         </div>

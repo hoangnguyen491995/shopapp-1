@@ -1,18 +1,31 @@
 package com.example.ott_fe.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class OrderDetail extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderDetailId ;
+    private long orderDetailId;
 
-    private long orderId ;
-    private int quantity ;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "orderId", nullable = false)
+    private Orders order;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "productId", nullable = false)
+    private Product product;
+
+    private int quantity;
 
 
 }
