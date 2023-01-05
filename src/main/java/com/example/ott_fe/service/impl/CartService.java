@@ -1,6 +1,6 @@
 package com.example.ott_fe.service.impl;
 
-import com.example.ott_fe.entity.Cart;
+import com.example.ott_fe.entity.Orders;
 import com.example.ott_fe.entity.User;
 import com.example.ott_fe.repository.CartRepository;
 import com.example.ott_fe.service.ICartService;
@@ -14,9 +14,9 @@ public class CartService implements ICartService {
     private CartRepository cartRepository;
 
     @Override
-    public Cart createCart(User user) {
-        Cart cart = new Cart();
-        cart.setUser(user);
-        return cartRepository.save(cart);
+    public Orders createOrder(User user) {
+        Orders order = new Orders();
+        order.setUser(user);
+        return cartRepository.save(order);
     }
 }

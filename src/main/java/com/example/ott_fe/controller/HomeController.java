@@ -1,5 +1,6 @@
 package com.example.ott_fe.controller;
 
+import com.example.ott_fe.entity.Image;
 import com.example.ott_fe.entity.Product;
 import com.example.ott_fe.entity.User;
 import com.example.ott_fe.service.ICatalogService;
@@ -30,7 +31,6 @@ public class HomeController {
     @Autowired
     ICatalogService catalogService;
 
-
     @GetMapping("/product")
     public String product(Model model) {
         model.addAttribute("products", productService.getAllProduct());
@@ -41,18 +41,29 @@ public class HomeController {
     @GetMapping("/productDetail")
     public String productDetail(Model model, @RequestParam(name = "productId") String productId) {
 
-        System.out.println(productId);
         List<Product> list = productService.getAllProduct();
         List<Product> productDetail = new ArrayList<>();
+
+        List<Image> imageList = imageService.getAllImage()  ;
+        List<Image> imageDetail = new ArrayList<>() ;
+
         for (int i = 0; i < list.size(); i++) {
             int productID1 = Integer.parseInt(productId);
-
             if (list.get(i).getProductId() == productID1) {
                 productDetail.add(list.get(i));
             }
         }
 
+        for (int i = 0; i < imageList.size(); i++) {
+            int productID1 = Integer.parseInt(productId);
+            if (imageList.get(i).getProductIds() == productID1) {
+                imageDetail.add(imageList.get(i));
+            }
+        }
         model.addAttribute("products", productDetail);
-        return "productDetail";
+        model.addAttribute("images", imageDetail);
+
+        return "/productDetail";
     }
+
 }

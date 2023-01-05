@@ -35,7 +35,7 @@ public class User extends BaseEntity {
     @OneToMany()
     @JsonIgnore
     @JoinColumn(name = "userId")
-    private List<Cart> carts;
+    private List<Orders> carts;
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(

@@ -15,23 +15,26 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Cart extends BaseEntity {
+public class Orders extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long cartId;
+    private long ordersId;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JsonIgnore
-    @JoinTable(
-            name = "cartProduct",
-            joinColumns = {@JoinColumn(name = "cartId")},
-            inverseJoinColumns = {@JoinColumn(name = "productId")}
-    )
-    @EqualsAndHashCode.Exclude
-    private Set<Product> products = new HashSet<>();
+//    @ManyToMany(cascade = CascadeType.MERGE)
+//    @JsonIgnore
+//    @JoinTable(
+//            name = "orderProduct",
+//            joinColumns = {@JoinColumn(name = "orderId")},
+//            inverseJoinColumns = {@JoinColumn(name = "orderId")}
+//    )
+//    @EqualsAndHashCode.Exclude
+//    private Set<Product> products = new HashSet<>();
+
+
+
 }

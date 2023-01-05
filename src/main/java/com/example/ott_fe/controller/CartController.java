@@ -1,7 +1,6 @@
 package com.example.ott_fe.controller;
 
-import com.example.ott_fe.entity.Cart;
-import com.example.ott_fe.entity.Product;
+import com.example.ott_fe.entity.Orders;
 import com.example.ott_fe.entity.User;
 import com.example.ott_fe.repository.CartRepository;
 import com.example.ott_fe.service.ICartService;
@@ -14,11 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.bind.PrintConversionEvent;
 import java.security.Principal;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/cart")
@@ -39,26 +34,31 @@ public class CartController {
     @GetMapping
     public String cart(Model model, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        Set<Product> products = user.getCarts().get(0).getProducts();
-        model.addAttribute("products", products);
+//        Set<Product> products = user.getCarts().get(0).getProducts();
+//        model.addAttribute("products", products);
         return "cart";
     }
 
     @GetMapping("/add-product")
     public String addProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
+
         User user = userService.findByUsername(principal.getName());
-        Cart cart = user.getCarts().get(0);
-        cart.getProducts().add(productService.getProductById(productId));
+        Orders cart = user.getCarts().get(0);
+//        cart.getProducts().add(productService.getProductById(productId));
         cartRepository.save(cart);
+
         return "redirect:/cart";
     }
 
     @GetMapping("/delete-product")
     public String deleteProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        Cart cart = user.getCarts().get(0);
-        cart.getProducts().remove(productService.getProductById(productId));
+        Orders cart = user.getCarts().get(0);
+//        cart.getProducts().remove(productService.getProductById(productId));
         cartRepository.save(cart);
         return "redirect:/cart";
     }
+
 }
+
+

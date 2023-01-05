@@ -19,7 +19,6 @@ public class ProductService implements IProductService {
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
-
     @Override
     public Product addProduct(Product product) {
         if (product != null) {
@@ -36,6 +35,7 @@ public class ProductService implements IProductService {
                 product1.setNameProduct(product.getNameProduct());
                 product1.setDescription(product.getDescription());
                 product1.setPrice(product.getPrice());
+                product1.setUrl(product.getUrl());
 //                   product1.setImages(product.getImages());
                 return productRepository.save(product1);
             }

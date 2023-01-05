@@ -1,19 +1,18 @@
 package com.example.ott_fe.controller;
 
 import com.example.ott_fe.entity.Product;
-import com.example.ott_fe.entity.User;
 import com.example.ott_fe.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("admin/product" )
+public class  ProductController {
+
     @Autowired
     IProductService productService;
 
@@ -22,31 +21,30 @@ public class ProductController {
         model.addAttribute("products", productService.getAllProduct());
         return productService.getAllProduct();
     }
-
+//  ====add product====
     @GetMapping("/add")
     public String addProductView(Model model) {
         model.addAttribute("product", new Product());
         return "admin/product";
-
     }
 
     @PostMapping("/add")
     public String addProduct(@ModelAttribute("product") Product product) {
-
         productService.addProduct(product);
-        return "redirect:/admin/product";
+        return "admin/product";
     }
 
     // sửa theo ID
-    @PutMapping("/update")
-    public Product updateProduct(@RequestBody Product product) {
-        return productService.updateProduct(product);
-    }
+    @PostMapping("/update")
+    public Product updateProduct(@ModelAttribute("product") Product product, Model model) {
+        model.addAttribute("product", productService.getAllProduct());
+     return productService.updateProduct(product);
+      //  return  "redirect:/" ;
+  }
 
-    @DeleteMapping("/delete")
-    public String deleteProduct(@RequestBody Long id) {
+    @GetMapping("/delete")
+    public String deleteProduct(@RequestParam(name = "productId") Long id) {
         productService.deleteProduct(id);
-        return "thang";
+        return "redirect:admin/product";
     }
-
 }

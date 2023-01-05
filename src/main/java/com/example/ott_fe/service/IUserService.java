@@ -12,7 +12,7 @@ public interface IUserService {
 
     User updateUser(User user);
 
-    boolean deleteUser(long User_Id);
+    boolean deleteUser(long UserId);
 
     List<User> getAllUser();
 //     ======login=======

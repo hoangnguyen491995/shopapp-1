@@ -23,8 +23,10 @@ public class Image extends BaseEntity {
 
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name = "productId", nullable = false)
-    private Product product;
+//    @ManyToOne
+//    @JoinColumn(name = "productId", nullable = false)
+//    private Product product;
+      private long productIds;
+
 
 }

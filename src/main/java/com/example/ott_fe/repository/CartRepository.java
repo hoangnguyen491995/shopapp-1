@@ -1,9 +1,8 @@
 package com.example.ott_fe.repository;
-import com.example.ott_fe.entity.Cart;
-import com.example.ott_fe.entity.Catalog;
+import com.example.ott_fe.entity.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Long> {
+public interface CartRepository extends JpaRepository<Orders, Long> {
 }

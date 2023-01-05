@@ -1,12 +1,9 @@
 package com.example.ott_fe.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,18 +23,26 @@ public class Product extends BaseEntity {
 
     private int price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "catalogId", nullable = false)
     private Catalog catalog;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Image> images;
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    private List<Image> images;
 
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
-    @ToString.Exclude
-    Set<Cart> carts = new HashSet<>();
+//    @ManyToMany(mappedBy = "products", cascade = CascadeType.MERGE)
+//    @ToString.Exclude
+//    Set<Orders> orders = new HashSet<>();
 
     private String url;
+
     private String insurance;
+
+    public Product(long productId){
+        this.productId=productId;
+}
+
+
+
 
 }

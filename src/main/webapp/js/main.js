@@ -37,3 +37,8 @@ addCart.onclick= function () {
     console.log("hserhgraw");
     location.replace("cart");
 } ;
+
+function sendID(id){
+    alert(id)
+}
+

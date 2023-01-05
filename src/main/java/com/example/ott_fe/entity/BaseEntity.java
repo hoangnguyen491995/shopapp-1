@@ -17,7 +17,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import java.util.Date;
 
-
 @Data
 @MappedSuperclass
 @NoArgsConstructor
@@ -36,21 +35,21 @@ public abstract class BaseEntity {
 
     @Column()
     @CreatedDate
-    Date createdAt;
+    Date created_date;
 
     @Column()
     @LastModifiedDate
-    Date modifiedAt;
+    Date updated_date;
 
     @PrePersist
     void preInsert() {
-        this.createdAt = new Date();
+        this.created_date = new Date();
         this.createdBy = "Hoang Nguyen";
     }
 
     @PreUpdate
     void preUpdate() {
-        this.modifiedAt = new Date();
+        this.updated_date = new Date();
         this.modifiedBy = "Hoang Nguyen";
     }
 }

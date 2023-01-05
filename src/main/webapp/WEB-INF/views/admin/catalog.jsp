@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Quản lí sản phẩm </title>
+    <title>Quản lí Danh mục sản phẩm </title>
     <style>
         a{
             text-decoration : none;
@@ -268,6 +268,7 @@
 </script>
 <div class="admin_dashboard">
     <div class="item_dashboard">
+        ${pageContext.request.userPrincipal.name}
         <img src="../../../assets/img-icon/person-icon.png" alt="">
         <br>
         <input style="outline: none;border:none;background-color:#ebef6d ;" id="myAccount_admin_receive"/>
@@ -275,8 +276,12 @@
     <h3 class="item_dashboard">Bảng Điều Khiển</h3>
     <a class="item_dashboard" href="/admin/product"> Sản phẩm </a>
     <a class="item_dashboard" href="/admin/user"> Người Dùng  </a>
-    <a class="item_dashboard" href="/admin/catalog"> Danh mục sản phẩm </a>
-    <p class="logout_internal item_dashboard "> Đăng xuất</p>
+    <a class="item_dashboard" href="/admin/catalog"> Danh mục sản phẩm </a><c:if test="${pageContext.request.userPrincipal.name != null}">
+    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+    <a href="#" onclick="document.forms['logoutForm'].submit()">Đăng xuất</a>
+</c:if>
 </div>
 
 <div class="container-xl">
@@ -287,27 +292,18 @@
                     <div class="col-sm-6">
                         <h2>Quản lí <b>Danh mục sản phẩm</b></h2>
                     </div>
-                    <%--<div class="col-sm-6">--%>
-                        <%--<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm</span></a>--%>
-                    <%--</div>--%>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
                     <th>catalog</th>
-
                 </tr>
                 </thead>
                 <c:forEach var="item" items="${catalog}">
-
                     <tbody >
                     <tr>
                         <td> ${item.catalogName}</td>
-                        <%--<td>--%>
-                            <%--<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-                            <%--<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-                        <%--</td>--%>
                     </tr>
                     </tbody>
                 </c:forEach>
@@ -391,11 +387,11 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Xóa sản phẩm</h4>
+                    <h4 class="modal-title">Xóa danh mục sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn muốn xóa sản phẩm này không?</p>
+                    <p>Bạn có chắc chắn muốn xóa danh mục sản phẩm này không?</p>
                     <p class="text-warning"><small>
                         Hành động này không thể được hoàn tác.</small></p>
                 </div>

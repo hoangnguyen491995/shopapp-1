@@ -17,6 +17,7 @@ import java.util.Set;
 
 @Service
 public class UserService implements IUserService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -42,6 +43,10 @@ public class UserService implements IUserService {
             User user1 = userRepository.getReferenceById(user.getUserId());
             if (user1 != null) {
                 user1.setEmail(user.getEmail());
+                user1.setUsername(user.getUsername()) ;
+                user1.setPhone(user.getPhone()) ;
+                user1.setPassword(user.getPassword()) ;
+                return userRepository.save(user1);
             }
         }
         return null;
@@ -88,7 +93,7 @@ public class UserService implements IUserService {
         roles.add(role);
         user.setRoles(roles);
         User endUser = userRepository.save(user);
-        cartService.createCart(endUser);
+        cartService.createOrder(endUser);
     }
 
     @Override

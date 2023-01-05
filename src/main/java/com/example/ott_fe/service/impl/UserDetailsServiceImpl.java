@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
-	
+	//chúng ta Override lại method này và cung cấp cho nó một User
 	@Autowired
 	private UserRepository userRepository;
 	
