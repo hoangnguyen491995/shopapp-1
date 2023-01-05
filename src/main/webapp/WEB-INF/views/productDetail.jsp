@@ -580,7 +580,7 @@
                                  Quay lại danh sách sản phẩm
                              </a>
                          </button>
-                         <button  class="addCart"><a href="cart/add-product?productId=${item.productId}">Thêm vào giỏ hàng</a>
+                         <button  class="addCart"><a href="cart/add-product?productId=${item.id}">Thêm vào giỏ hàng</a>
                          </button>
                      </div>
 

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,11 +20,16 @@ public class Orders extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ordersId;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "orderId")
+    private List<OrderDetail> orderDetails;
 
 //    @ManyToMany(cascade = CascadeType.MERGE)
 //    @JsonIgnore
@@ -34,7 +40,6 @@ public class Orders extends BaseEntity {
 //    )
 //    @EqualsAndHashCode.Exclude
 //    private Set<Product> products = new HashSet<>();
-
 
 
 }

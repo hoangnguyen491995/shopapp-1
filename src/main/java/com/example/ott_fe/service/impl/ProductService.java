@@ -30,7 +30,7 @@ public class ProductService implements IProductService {
     @Override
     public Product updateProduct(Product product) {
         if (product != null) {
-            Product product1 = productRepository.findById(product.getProductId()).orElse(null);
+            Product product1 = productRepository.findById(product.getId()).orElse(null);
             if (product1 != null) {
                 product1.setNameProduct(product.getNameProduct());
                 product1.setDescription(product.getDescription());

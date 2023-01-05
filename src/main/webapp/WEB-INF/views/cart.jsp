@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="d-flex align-items-center"><a
-                                href="/cart/delete-product?productId=${item.productId}"
+                                href="/cart/delete-product?productId=${item.id}"
                         ><i
                                 class="fa fa-trash mb-1 text-danger"></i></a>
                         </div>
