@@ -68,15 +68,13 @@ public class CartController {
     }
 
     @GetMapping("/delete-product")
-    public String deleteProductOrderDetail(@RequestParam(name = "productId") Long productId, Principal principal) {
-
+    public String deleteProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
         User user = userService.findByUsername(principal.getName());
         Orders order = user.getCarts().get(0);
-        orderDetailService.deleteProductOrderDetail(order, productId);
-        //    order.getOrderDetails().remove(productId);
-        //    OrderDetailRepository.save(order);
+        orderDetailService.deleteByOrderIdAndProductId(order, productId);
         return "redirect:/cart";
-
     }
+
 }
+
 

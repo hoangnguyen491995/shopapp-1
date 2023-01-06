@@ -60,4 +60,18 @@ public class OrderDetailService implements IOrderDetailService {
 //            productService.addProduct(product);
         }
     }
+
+    @Override
+    public void deleteByOrderIdAndProductId(Orders order, Long productId) {
+        OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), productId);
+        if (orderDetail != null) {
+            if (orderDetail.getQuantity() > 1) {
+                orderDetail.setQuantity(orderDetail.getQuantity() - 1);
+                orderDetailRepository.save(orderDetail);
+            } else {
+                orderDetailRepository.delete(orderDetail);
+            }
+
+        }
+    }
 }
