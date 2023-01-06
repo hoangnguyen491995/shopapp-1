@@ -41,7 +41,7 @@ public class CartController {
     @GetMapping
     public String cart(Model model, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        model.addAttribute("oderDetail", orderDetailService.getDetailByOrderId(user.getUserId()));
+        model.addAttribute("oderDetail", orderDetailService.getDetailByOrderId(user.getCarts().get(0).getId()));
 //        model.addAttribute("products", productService.getAllProduct());
         return "cart";
     }

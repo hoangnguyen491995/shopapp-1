@@ -26,7 +26,7 @@ public class Orders extends BaseEntity {
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JsonIgnore
     @JoinColumn(name = "orderId")
     private List<OrderDetail> orderDetails;

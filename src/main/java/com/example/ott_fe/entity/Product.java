@@ -29,7 +29,7 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "catalogId", nullable = false)
     private Catalog catalog;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JsonIgnore
     @JoinColumn(name = "productId")
     private List<OrderDetail> orderDetails;

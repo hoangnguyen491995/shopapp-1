@@ -56,7 +56,7 @@ public class OrderDetailService implements IOrderDetailService {
                 orderDetail.setQuantity(orderDetail.getQuantity() - 1);
                 orderDetailRepository.save(orderDetail);
             } else {
-                orderDetailRepository.delete(orderDetail);
+                orderDetailRepository.deleteById(orderDetail.getOrderDetailId());
             }
 
         }
