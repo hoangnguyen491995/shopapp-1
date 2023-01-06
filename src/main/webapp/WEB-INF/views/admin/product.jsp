@@ -360,24 +360,24 @@
                 <c:forEach var="item" items="${products}">
                     <tbody>
                     <tr>
-                        <td nameProduct="${item.nameProduct}" productId="${item.productId}"
+                        <td nameProduct="${item.nameProduct}" productId="${item.id}"
                             id="123"> ${item.nameProduct}</td>
-                        <td> ${item.productId}</td>
+                        <td> ${item.id}</td>
                         <td> ${item.price}</td>
                         <td> ${item.description}</td>
                             <%--<td>${item.catalog}</td>--%>
                         <td>
-                            <a onclick='return  editForm("${item.productId}","${item.nameProduct}","${item.description}","${item.price}", "${item.url}")'
+                            <a onclick='return  editForm("${item.id}","${item.nameProduct}","${item.description}","${item.price}", "${item.url}")'
                                href="#editEmployeeModal" class="edit"
                                data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip"
                                     title="Edit">&#xE254;</i>
                             </a>
-                            <a onclick='return DetailForm("${item.productId}","${item.nameProduct}","${item.description}","${item.price}", "${item.url}")'
+                            <a onclick='return DetailForm("${item.id}","${item.nameProduct}","${item.description}","${item.price}", "${item.url}")'
                                href="#detailEmployeeModal" data-toggle="modal">
                                 Xem chi tiết
                             </a>
-                            <a onclick="return deleteForm(${item.productId})" href="#deleteEmployeeModal" class="delete"
+                            <a onclick="return deleteForm(${item.id})" href="#deleteEmployeeModal" class="delete"
                                data-toggle="modal"><i class="material-icons"
                                                       data-toggle="tooltip"
                                                       title="Delete">&#xE872;</i></a>
@@ -415,12 +415,21 @@
                         <form:textarea rows="5" path="description" class="form-control"></form:textarea>
                     </div>
                     <div class="form-group">
-                        <label>Đường dẫn liên kết đến hình ảnh</label>
-                        <form:input path="url" type="text" class="form-control"/>
+                        <%--<label>Đường dẫn liên kết đến hình ảnh</label>--%>
+                        <%--<form:input path="url" type="text" class="form-control"/>--%>
+                        <form:input path="url" type="file" id="file-upload"/>
                     </div>
                     <div class="form-group">
                         <label>Danh mục</label>
-                        <form:input path="catalog" type="number" class="form-control"/>
+                        <form:input  path="catalog" type="number" class="form-control" id="menuSelect" />
+                        <c:forEach var="item" items="${catalog}">
+                            <span onclick="return menuSelect(${item.catalogName})"> ${item.catalogName} </span> <br/>
+                        </c:forEach>
+                            <%--<form:select path="catalogName"--%>
+                            <%--class="form-control ocb-no-padding-left" id="slaccountPayU">--%>
+                            <%--<form:option value="NONE" label="chọn danh mục"/>--%>
+                            <%--<form:options items="${catalog}"/>--%>
+                            <%--</form:select>--%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -447,7 +456,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID sản phẩm</label>
-                        <form:input  id="editIDProduct" path="productId" type="text" class="form-control"
+                        <form:input id="editIDProduct" path="id" type="text" class="form-control"
                         />
                     </div>
                     <div class="form-group">
@@ -458,7 +467,7 @@
                     </div>
                     <div class="form-group">
                         <label>Giá bán</label>
-                        <form:input id="editPriceProduct" path="price" class="form-control" />
+                        <form:input id="editPriceProduct" path="price" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
@@ -492,15 +501,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>ID sản phẩm </label>
+                        <label>ID sản phẩm : </label>
                         <label id="productID"></label>
                     </div>
                     <div class="form-group">
-                        <label id="nameProduct">Tên sản phẩm</label>
+                        <label id="nameProduct">Tên sản phẩm : </label>
                         <label id="nameDetail"> </label>
                     </div>
                     <div class="form-group">
-                        <label>Giá bán </label>
+                        <label>Giá bán :  </label>
                         <label id="priceDetail"> </label>
 
                     </div>
@@ -561,10 +570,7 @@
     }
 
     function deleteForm(id) {
-
         document.getElementById("deleteProduct").setAttribute("href", "/admin/product/delete?productId=" + id);
-
-
     }
 
     function DetailForm(id, name, description, price, url) {
@@ -574,6 +580,12 @@
         document.getElementById("priceDetail").innerHTML = price;
         document.getElementById("urlDetail").setAttribute("src", url);
     }
+
+    function menuSelect(name) {
+        console.log(name)
+        document.getElementById("menuSelect").setAttribute("value", name);
+    }
 </script>
 </body>
 </html>
+

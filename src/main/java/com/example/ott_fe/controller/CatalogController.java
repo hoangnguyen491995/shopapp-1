@@ -28,6 +28,7 @@ public class CatalogController {
 
         List<Product> productList = productService.getAllProduct();
         List<Product> listbyCatagory = new ArrayList<>();
+
         for (int i = 0; i < productList.size(); i++) {
             int catalogId1 = Integer.parseInt(catalogId);
             if (productList.get(i).getCatalog().getCatalogId() == catalogId1) {
@@ -36,8 +37,9 @@ public class CatalogController {
         }
         model.addAttribute("products", listbyCatagory);
         model.addAttribute("catalog", catalogService.getAllCatalog());
-
         return "/catalog";
-
     }
+
+
+
 }

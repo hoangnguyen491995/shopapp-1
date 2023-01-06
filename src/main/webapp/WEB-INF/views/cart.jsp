@@ -45,33 +45,28 @@
                 <div class="p-2">
                     <h4>Giỏ Hàng của bạn </h4>
                 </div>
-                <c:forEach var="item" items="${products}">
-                    <div
-                            class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                        <div class="mr-1"><img class="rounded" src="${item.url}"
-                                               width="70"></div>
+                <c:forEach var="item" items="${listById}">
+                    <img style="width: 80px;height: 80px" src="${item.url}" alt="hình sản phẩm"/>
+                    <span> ${item.price}</span>
+                </c:forEach>
+                <c:forEach var="item" items="${oderDetail}">
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                        <div class="mr-1">
+                        </div>
                         <div style="display: flex;  justify-content: center; align-items: center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-dash" viewBox="0 0 16 16">
-                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                </svg>
-
-                            <span style="margin: 0 5px">1</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-plus" viewBox="0 0 16 16">
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg>
-
+                            <span>-</span>
+                            <span style="margin: 0 5px"> ${item.quantity} </span>
+                            <span>+</span>
                         </div>
                         <div class="d-flex flex-row align-items-center qty">
-                            <h5 class="text-grey">${item.nameProduct}</h5>
+                            <h5 class="text-grey">${item.orderDetailId}</h5>
                         </div>
                         <div>
-                            <h5 class="text-grey">${item.price}$</h5>
+                            <h5 class="text-grey"></h5>
                         </div>
 
                         <div class="d-flex align-items-center"><a
-                                href="/cart/delete-product?productId=${item.id}"
+                                href="/cart/delete-product?productId=${item.orderDetailId}"
                         ><i
                                 class="fa fa-trash mb-1 text-danger"></i></a>
                         </div>

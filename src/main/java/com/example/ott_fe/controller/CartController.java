@@ -5,6 +5,7 @@ import com.example.ott_fe.entity.Orders;
 import com.example.ott_fe.entity.Product;
 import com.example.ott_fe.entity.User;
 import com.example.ott_fe.repository.CartRepository;
+import com.example.ott_fe.repository.OrderDetailRepository;
 import com.example.ott_fe.service.ICartService;
 import com.example.ott_fe.service.IOrderDetailService;
 import com.example.ott_fe.service.IProductService;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -33,36 +35,48 @@ public class CartController {
 
     @Autowired
     IOrderDetailService orderDetailService;
+    @Autowired
+    IProductService productService;
 
     @GetMapping
     public String cart(Model model, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-//        Set<Product> products = user.getCarts().get(0).getProducts();
-//        model.addAttribute("products", products);
+        model.addAttribute("oderDetail", orderDetailService.getDetailByOrderId(user.getUserId()));
+        model.addAttribute("products", productService.getAllProduct());
         return "cart";
     }
 
     @GetMapping("/add-product")
-    public String addProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
+    public String addProductToCart(Model model, @RequestParam(name = "productId") Long productId, Principal principal) {
 
         User user = userService.findByUsername(principal.getName());
         Orders order = user.getCarts().get(0);
+
         orderDetailService.findByOrderIdAndProductId(order, productId);
 
-//        cart.getProducts().add(productService.getProductById(productId));
+        List<Product> product = productService.getAllProduct();
+        List<Product> listById = new ArrayList<>();
 
+        for (int i = 0; i < product.size(); i++) {
+//          int productId1 = Integer.parseInt(productId);
+            if (product.get(i).getId() == productId) {
+                listById.add(product.get(i));
+            }
+        }
+        model.addAttribute("listById", listById);
         return "redirect:/cart";
     }
 
     @GetMapping("/delete-product")
-    public String deleteProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
+    public String deleteProductOrderDetail(@RequestParam(name = "productId") Long productId, Principal principal) {
+
         User user = userService.findByUsername(principal.getName());
-        Orders cart = user.getCarts().get(0);
-//        cart.getProducts().remove(productService.getProductById(productId));
-        cartRepository.save(cart);
+        Orders order = user.getCarts().get(0);
+        orderDetailService.deleteProductOrderDetail(order, productId);
+        //    order.getOrderDetails().remove(productId);
+        //    OrderDetailRepository.save(order);
         return "redirect:/cart";
+
     }
-
 }
-
 

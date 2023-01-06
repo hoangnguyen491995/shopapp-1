@@ -582,7 +582,7 @@
                     Xem chi tiết
                 </a>
                 <button class="addCart">
-                    <a href="cart/add-product?productId=${item.productId}">Thêm vào giỏ hàng</a>
+                    <a href="cart/add-product?productId=${item.id}">Thêm vào giỏ hàng</a>
                 </button>
             </div>
         </div>

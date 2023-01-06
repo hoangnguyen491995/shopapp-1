@@ -27,5 +27,4 @@ public class OrderDetail extends BaseEntity {
 
     private int quantity;
 
-
 }

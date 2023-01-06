@@ -26,6 +26,15 @@ public class OrderDetailService implements IOrderDetailService {
     @Autowired
     CartRepository cartRepository;
 
+    ////xóa sản phẩm trong giỏ hàng
+    @Override
+    public void deleteProductOrderDetail( Orders order,Long id){
+        OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), id);
+        if (orderDetail != null) {
+            orderDetailRepository.delete(orderDetail);
+            return;
+        }
+    }
 
     @Override
     public List<OrderDetail> getDetailByOrderId(Long id) {

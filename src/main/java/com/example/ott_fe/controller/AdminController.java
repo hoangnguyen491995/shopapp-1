@@ -1,5 +1,6 @@
 package com.example.ott_fe.controller;
 
+import com.example.ott_fe.entity.Catalog;
 import com.example.ott_fe.entity.Image;
 import com.example.ott_fe.entity.Product;
 import com.example.ott_fe.entity.User;
@@ -37,6 +38,7 @@ public class AdminController {
     @GetMapping("/admin/product")
     public String product(Model model) {
         model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("catalog", catalogService.getAllCatalog());
         model.addAttribute("product", new Product());
         return "admin/product";
     }
@@ -47,13 +49,34 @@ public class AdminController {
         model.addAttribute("user", new User());
         return "admin/user";
     }
-    // Thêm người dùng
+    //  hiện danh sách
 
     @GetMapping("admin/catalog")
     public String catalog(Model model) {
         model.addAttribute("catalog", catalogService.getAllCatalog());
         return "admin/catalog";
     }
+   // xóa catalog
+    @GetMapping("admin/catalog/delete")
+    public String deleteCatalog( @RequestParam(name = "catalogId") String catalogId){
+        Long catalogId1 = Long.parseLong(catalogId);
+        catalogService.deleteCatalog(catalogId1) ;
+        return "redirect:/admin/catalog" ;
+    }
+    // thêm catalog
+    @PostMapping("admin/catalog/add")
+    public String addProduct(@ModelAttribute("catalog") Catalog catalog) {
+        catalogService.addCatalog(catalog);
+        return "admin/product";
+    }
+
+
+
+
+
+
+
+
 
     @GetMapping("admin/productDetailAdmin")
     public String productDetail(Model model, @RequestParam(name = "productId") String productId) {
