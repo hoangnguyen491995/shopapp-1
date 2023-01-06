@@ -57,9 +57,8 @@ public class CartController {
     @GetMapping("/delete-product")
     public String deleteProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
         User user = userService.findByUsername(principal.getName());
-        Orders cart = user.getCarts().get(0);
-//        cart.getProducts().remove(productService.getProductById(productId));
-        cartRepository.save(cart);
+        Orders order = user.getCarts().get(0);
+        orderDetailService.deleteByOrderIdAndProductId(order, productId);
         return "redirect:/cart";
     }
 
