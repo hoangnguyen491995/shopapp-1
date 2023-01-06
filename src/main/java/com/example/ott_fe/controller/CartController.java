@@ -42,7 +42,7 @@ public class CartController {
     public String cart(Model model, Principal principal) {
         User user = userService.findByUsername(principal.getName());
         model.addAttribute("oderDetail", orderDetailService.getDetailByOrderId(user.getUserId()));
-        model.addAttribute("products", productService.getAllProduct());
+//        model.addAttribute("products", productService.getAllProduct());
         return "cart";
     }
 
@@ -51,19 +51,8 @@ public class CartController {
 
         User user = userService.findByUsername(principal.getName());
         Orders order = user.getCarts().get(0);
-
         orderDetailService.findByOrderIdAndProductId(order, productId);
 
-        List<Product> product = productService.getAllProduct();
-        List<Product> listById = new ArrayList<>();
-
-        for (int i = 0; i < product.size(); i++) {
-//          int productId1 = Integer.parseInt(productId);
-            if (product.get(i).getId() == productId) {
-                listById.add(product.get(i));
-            }
-        }
-        model.addAttribute("listById", listById);
         return "redirect:/cart";
     }
 

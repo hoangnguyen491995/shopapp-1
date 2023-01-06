@@ -26,21 +26,12 @@ public class OrderDetailService implements IOrderDetailService {
     @Autowired
     CartRepository cartRepository;
 
-    ////xóa sản phẩm trong giỏ hàng
-    @Override
-    public void deleteProductOrderDetail( Orders order,Long id){
-        OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), id);
-        if (orderDetail != null) {
-            orderDetailRepository.delete(orderDetail);
-            return;
-        }
-    }
-
     @Override
     public List<OrderDetail> getDetailByOrderId(Long id) {
         return orderDetailRepository.findAllByOrderId(id);
     }
 
+//   Add product from cart
     @Override
     public void findByOrderIdAndProductId(Orders order, Long productId) {
         OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), productId);
@@ -54,13 +45,9 @@ public class OrderDetailService implements IOrderDetailService {
             orderDetail1.setOrder(order);
             orderDetail1.setProduct(product);
             orderDetailRepository.save(orderDetail1);
-//            order.getOrderDetails().add(orderDetail1);
-//            product.getOrderDetails().add(orderDetail1);
-//            cartRepository.save(order);
-//            productService.addProduct(product);
         }
     }
-
+//  delete product from cart
     @Override
     public void deleteByOrderIdAndProductId(Orders order, Long productId) {
         OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), productId);

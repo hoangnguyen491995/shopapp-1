@@ -54,15 +54,15 @@
                         <div class="mr-1">
                         </div>
                         <div style="display: flex;  justify-content: center; align-items: center">
-                            <span>-</span>
+                            <a href="/cart/delete-product?productId=${item.product.id}" >-</a>
                             <span style="margin: 0 5px"> ${item.quantity} </span>
-                            <span>+</span>
+                            <a>+</a>
                         </div>
                         <div class="d-flex flex-row align-items-center qty">
-                            <h5 class="text-grey">${item.orderDetailId}</h5>
+                            <h5 class="text-grey">${item.product.nameProduct}</h5>
                         </div>
                         <div>
-                            <h5 class="text-grey"></h5>
+                            <h5 class="text-grey"> </h5>
                         </div>
 
                         <div class="d-flex align-items-center"><a
@@ -70,6 +70,7 @@
                         ><i
                                 class="fa fa-trash mb-1 text-danger"></i></a>
                         </div>
+
                     </div>
                 </c:forEach>
                 <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
