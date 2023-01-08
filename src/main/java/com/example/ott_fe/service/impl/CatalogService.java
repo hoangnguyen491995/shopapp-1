@@ -29,6 +29,7 @@ public class CatalogService implements ICatalogService {
 
     @Override
     public List<Catalog> getAllCatalog() {
+
         return catalogRepository.findAll();
     }
 
@@ -42,6 +43,13 @@ public class CatalogService implements ICatalogService {
 
     @Override
     public Catalog updateCatalog(Catalog catalog) {
+        if (catalog != null) {
+            Catalog catalog1 = catalogRepository.findById(catalog.getId()).orElse(null);
+            if (catalog1 != null) {
+                catalog1.setCatalogName(catalog.getCatalogName());
+                return catalogRepository.save(catalog1);
+            }
+        }
         return null;
     }
 }

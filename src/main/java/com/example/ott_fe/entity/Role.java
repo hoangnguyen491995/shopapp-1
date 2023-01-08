@@ -14,9 +14,6 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class Role extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long roleId;
 
     private String name;
 

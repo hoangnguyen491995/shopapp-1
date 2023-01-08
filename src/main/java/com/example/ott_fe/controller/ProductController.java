@@ -28,11 +28,9 @@ public class  ProductController {
         return "admin/product";
     }
 
-
     @PostMapping("/add")
     public String addProduct(@ModelAttribute("product") Product product) {
         productService.addProduct(product);
-
         return "admin/product";
     }
 

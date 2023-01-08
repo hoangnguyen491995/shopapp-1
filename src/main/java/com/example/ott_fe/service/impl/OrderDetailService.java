@@ -47,7 +47,7 @@ public class OrderDetailService implements IOrderDetailService {
             orderDetailRepository.save(orderDetail1);
         }
     }
-//  delete product from cart
+//  delete product from cart getQuantity
     @Override
     public void deleteByOrderIdAndProductId(Orders order, Long productId) {
         OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), productId);
@@ -56,9 +56,20 @@ public class OrderDetailService implements IOrderDetailService {
                 orderDetail.setQuantity(orderDetail.getQuantity() - 1);
                 orderDetailRepository.save(orderDetail);
             } else {
-                orderDetailRepository.deleteById(orderDetail.getOrderDetailId());
+                orderDetailRepository.deleteById(orderDetail.getId());
             }
 
         }
     }
+
+   //  delete product from cart
+    @Override
+    public void deleteByOrderIdAndPrductIds(Orders order, Long productId){
+        OrderDetail orderDetail = orderDetailRepository.findByOrderIdAndProductId(order.getId(), productId);
+
+        if(orderDetail != null){
+            orderDetailRepository.deleteById(orderDetail.getId());
+        }
+    }
+
 }

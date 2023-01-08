@@ -27,7 +27,7 @@ public class UserController {
     public String addUserView(Model model) {
         model.addAttribute("users",userService.getAllUser()) ;
         model.addAttribute("user", new User());
-        return "redirect:admin/user";
+        return "redirect:";
 
     }
 

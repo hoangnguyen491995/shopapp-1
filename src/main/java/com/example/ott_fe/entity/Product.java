@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -15,19 +14,21 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class Product extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
     private String nameProduct;
 
     private String description;
 
     private int price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "catalogId", nullable = false)
     private Catalog catalog;
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "productId", nullable = false)
+//    private Product product;
+//
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JsonIgnore

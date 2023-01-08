@@ -357,20 +357,22 @@
                 <c:forEach var="item" items="${catalog}">
                     <tbody>
                     <tr>
-                        <td> ${item.catalogId}</td>
+                        <td> ${item.id}</td>
                         <td> ${item.catalogName}</td>
+                            <%--${item.product.nameProduct}--%>
+                            <%--<td> ${item.product.nameProduct}</td>--%>
                         <td>
-                            <a onclick='return  editForm("${item.catalogId}","${item.catalogName}")'
+                            <a onclick='return  editForm("${item.id}","${item.catalogName}")'
                                href="#editEmployeeModal" class="edit"
                                data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip"
                                     title="Edit">&#xE254;</i>
                             </a>
-                            <a onclick='return DetailForm("${item.catalogId}","${item.catalogName}")'
+                            <a onclick='return DetailForm("${item.id}","${item.catalogName}")'
                                href="#detailEmployeeModal" data-toggle="modal">
                                 Xem chi tiết
                             </a>
-                            <a onclick="return deleteForm(${item.catalogId})" href="#deleteEmployeeModal" class="delete"
+                            <a onclick="return deleteForm(${item.id})" href="#deleteEmployeeModal" class="delete"
                                data-toggle="modal"><i class="material-icons"
                                                       data-toggle="tooltip"
                                                       title="Delete">&#xE872;</i></a>
@@ -387,8 +389,7 @@
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <%--method="post" modelAttribute="catalog" action="admin/catalog/add"--%>
-            <form>
+            <form:form method="post" modelAttribute="catalog" action="catalog/add">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm danh mục sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal"
@@ -396,69 +397,61 @@
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <div class="form-group">
+                            <label>Id danh mục sản phẩm</label>
+                            <form:input path="id" type="text" class="form-control"/>
+                    </div>
                     <div class="form-group">
                         <label>Tên danh mục sản phẩm</label>
-                        <input path="catalogName" type="text" class="form-control"/>
+                            <%--<form:input path="catalogName" type="text" class="form-control" --%>
+                        <input class="form-control">
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal"
                            value="Quay lại"/>
-                    <input type="submit" class="btn btn-success" value="Thêm"/>
+                    <input type="submit" class="btn btn-success" value="Thêm Danh mục"/>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
+            </form:form>
+
         </div>
     </div>
 </div>
 <!-- Edit Modal HTML -->
-<%--<div id="editEmployeeModal" class="modal fade">--%>
-<%--<div class="modal-dialog">--%>
-<%--<div class="modal-content">--%>
-<%--<form:form method="post" modelAttribute="product" action="product/update">--%>
-<%--<div class="modal-header">--%>
-<%--<h4 class="modal-title">Cập nhập thông tin sản phẩm</h4>--%>
-<%--<button type="button" class="close" data-dismiss="modal"--%>
-<%--aria-hidden="true">&times;--%>
-<%--</button>--%>
-<%--</div>--%>
-<%--<div class="modal-body">--%>
-<%--<div class="form-group">--%>
-<%--<label>ID sản phẩm</label>--%>
-<%--<form:input id="editIDProduct" path="id" type="text" class="form-control"--%>
-<%--/>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<label>Tên sản phẩm</label>--%>
-<%--<form:input path="nameProduct" class="form-control"--%>
-<%--id="editNameProduct"--%>
-<%--/>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<label>Giá bán</label>--%>
-<%--<form:input id="editPriceProduct" path="price" class="form-control"/>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<label>Mô tả</label>--%>
-<%--<form:input id="editDescriptionProduct" path="description" class="form-control"/>--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<label>Url</label>--%>
-<%--<form:input id="editUrlProduct" path="url" type="text" class="form-control"/>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="modal-footer">--%>
-<%--<input type="button" class="btn btn-default" data-dismiss="modal"--%>
-<%--value="Quay lại"/>--%>
-<%--<input type="submit" class="btn btn-info" value="Lưu"/>--%>
-<%--</div>--%>
-<%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--</form:form>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
+<div id="editEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form:form method="post" modelAttribute="catalog" action="catalog/update">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cập nhập thông tin sản phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>ID Danh mục sản phẩm</label>
+                            <form:input id="editIDCatalog" path="id" type="text" class="form-control"
+                            />
+                    </div>
+                    <div class="form-group">
+                        <label>Tên Danh mục sản phẩm</label>
+                            <%--<form:input path="catalogName" class="form-control"--%>
+                            <%--id="editNameCatalog"--%>
+                            <%--/>--%>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal"
+                           value="Quay lại"/>
+                    <input type="submit" class="btn btn-info" value="Lưu"/>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form:form>
+        </div>
+    </div>
+</div>
 <%--===xem chi tiết danh mục sản phẩm====--%>
 <div id="detailEmployeeModal" class="modal fade">
     <div class="modal-dialog">
@@ -473,20 +466,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID danh mục sản phẩm: </label>
-                        <label id="productID"></label>
+                        <label id="id"></label>
                     </div>
                     <div class="form-group">
                         <label id="nameProduct">Tên danh mục sản phẩm : </label>
-                        <label id="nameDetail"> </label>
+                        <label id="CatalogName"> </label>
                     </div>
 
-                    <div class="form-group">
-                        <label>Tất cả các sản phẩm thuộc danh mục : </label>
-                        <%--<c:forEach var="item" items="products">--%>
-                        <%--<label>Tất cả các sản phẩm thuộc danh mục : </label>--%>
-                        <%--<label>${item.nameProduct}</label>--%>
-                        <%--</c:forEach>--%>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-default" data-dismiss="modal"
@@ -525,17 +511,22 @@
 </script>
 <script>
     function editForm(id, name) {
-        document.getElementById("editIDProduct").setAttribute("value", id);
-        document.getElementById("editNameProduct").setAttribute("value", name);
+
+        console.log(id);
+        console.log(name);
+
+        document.getElementById("editIDCatalog").setAttribute("value", id);
+        document.getElementById("editNameCatalog").setAttribute("value", name);
     }
 
     function deleteForm(id) {
-        document.getElementById("deleteProduct").setAttribute("href", "/admin/catalog/delete?catalogId=" + id);
+        document.getElementById("deleteProduct").setAttribute("href", "/admin/catalog/delete?id=" + id);
     }
 
     function DetailForm(id, name) {
-        document.getElementById("productID").innerHTML = id;
-        document.getElementById("nameDetail").innerHTML = name;
+        document.getElementById("id").innerHTML = id;
+        document.getElementById("CatalogName").innerHTML = name;
+
     }
 </script>
 </body>

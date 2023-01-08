@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //chúng ta Override lại method này và cung cấp cho nó một User
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    // - Method userDetailsService() có tác dụng cung cấp thông tin user cho Spring Security,
+    // - Method userDetailsService() có tác dụng cung cấp thông tin user cho Spring Security,long123
 //    private UserDetailsService userDetailsService;
     private UserDetailsServiceImpl userDetailsService ;
 

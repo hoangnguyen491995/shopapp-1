@@ -353,19 +353,19 @@
                     <th>Tên</th>
                     <th>Id</th>
                     <th>Giá bán</th>
-                    <th>Mô tả</th>
+                    <%--<th>Mô tả</th>--%>
                     <th>Hành động</th>
                 </tr>
                 </thead>
                 <c:forEach var="item" items="${products}">
                     <tbody>
                     <tr>
-                        <td nameProduct="${item.nameProduct}" productId="${item.id}"
+                        <td nameProduct="${item.nameProduct}" id="${item.id}"
                             id="123"> ${item.nameProduct}</td>
                         <td> ${item.id}</td>
                         <td> ${item.price}</td>
-                        <td> ${item.description}</td>
-                            <%--<td>${item.catalog}</td>--%>
+                        <%--<td> ${item.description}</td>--%>
+                            <%--<td>${item.catalog.catalogName}</td>--%>
                         <td>
                             <a onclick='return  editForm("${item.id}","${item.nameProduct}","${item.description}","${item.price}", "${item.url}")'
                                href="#editEmployeeModal" class="edit"
@@ -390,7 +390,7 @@
         </div>
     </div>
 </div>
-<!-- Create Modal HTML -->
+<!-- Create product -->
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -415,21 +415,24 @@
                         <form:textarea rows="5" path="description" class="form-control"></form:textarea>
                     </div>
                     <div class="form-group">
-                        <%--<label>Đường dẫn liên kết đến hình ảnh</label>--%>
-                        <%--<form:input path="url" type="text" class="form-control"/>--%>
+                            <%--<label>Đường dẫn liên kết đến hình ảnh</label>--%>
+                            <%--<form:input path="url" type="text" class="form-control"/>--%>
                         <form:input path="url" type="file" id="file-upload"/>
                     </div>
                     <div class="form-group">
                         <label>Danh mục</label>
-                        <form:input  path="catalog" type="number" class="form-control" id="menuSelect" />
-                        <c:forEach var="item" items="${catalog}">
-                            <span onclick="return menuSelect(${item.catalogName})"> ${item.catalogName} </span> <br/>
-                        </c:forEach>
-                            <%--<form:select path="catalogName"--%>
-                            <%--class="form-control ocb-no-padding-left" id="slaccountPayU">--%>
-                            <%--<form:option value="NONE" label="chọn danh mục"/>--%>
-                            <%--<form:options items="${catalog}"/>--%>
-                            <%--</form:select>--%>
+                        <form:input path="catalog" type="text" class="form-control" id="menuSelect"/>
+                        <%--<c:forEach var="item" items="${catalog}">--%>
+                            <%--<span  onclick="return menuSelect(${item.catalogId})"> ${item.catalogName} </span> <br/>--%>
+                        <%--</c:forEach>--%>
+                         <br/>
+                        <form:select  path="">
+                            <c:forEach var="item" items="${catalog}">
+                                <form:option onclick="return menuSelect(${item.catalogId})" path="catalogId" style="background: #08a43b"
+                                        value="${item.catalogId}">
+                                </form:option>
+                            </c:forEach>
+                        </form:select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -502,14 +505,14 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID sản phẩm : </label>
-                        <label id="productID"></label>
+                        <label id="id"></label>
                     </div>
                     <div class="form-group">
                         <label id="nameProduct">Tên sản phẩm : </label>
                         <label id="nameDetail"> </label>
                     </div>
                     <div class="form-group">
-                        <label>Giá bán :  </label>
+                        <label>Giá bán : </label>
                         <label id="priceDetail"> </label>
 
                     </div>
@@ -570,11 +573,11 @@
     }
 
     function deleteForm(id) {
-        document.getElementById("deleteProduct").setAttribute("href", "/admin/product/delete?productId=" + id);
+        document.getElementById("deleteProduct").setAttribute("href", "/admin/product/delete?id=" + id);
     }
 
     function DetailForm(id, name, description, price, url) {
-        document.getElementById("productID").innerHTML = id;
+        document.getElementById("id").innerHTML = id;
         document.getElementById("nameDetail").innerHTML = name;
         document.getElementById("descriptionDetail").innerHTML = description;
         document.getElementById("priceDetail").innerHTML = price;
@@ -582,7 +585,7 @@
     }
 
     function menuSelect(name) {
-        console.log(name)
+        console.log(name);
         document.getElementById("menuSelect").setAttribute("value", name);
     }
 </script>

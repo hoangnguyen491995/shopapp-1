@@ -40,7 +40,7 @@ public class UserService implements IUserService {
     @Override
     public User updateUser(User user) {
         if (user != null) {
-            User user1 = userRepository.getReferenceById(user.getUserId());
+            User user1 = userRepository.getReferenceById(user.getId());
             if (user1 != null) {
                 user1.setEmail(user.getEmail());
                 user1.setUsername(user.getUsername()) ;

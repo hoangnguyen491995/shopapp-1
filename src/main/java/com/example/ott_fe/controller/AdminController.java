@@ -1,7 +1,6 @@
 package com.example.ott_fe.controller;
 
 import com.example.ott_fe.entity.Catalog;
-import com.example.ott_fe.entity.Image;
 import com.example.ott_fe.entity.Product;
 import com.example.ott_fe.entity.User;
 import com.example.ott_fe.service.ICatalogService;
@@ -13,12 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class AdminController {
 
     @Autowired
@@ -63,20 +58,20 @@ public class AdminController {
         catalogService.deleteCatalog(catalogId1) ;
         return "redirect:/admin/catalog" ;
     }
-    // thêm catalog
+    // add catalog
     @PostMapping("admin/catalog/add")
-    public String addProduct(@ModelAttribute("catalog") Catalog catalog) {
+    public String addCatalog(@ModelAttribute("catalog") Catalog catalog) {
         catalogService.addCatalog(catalog);
-        return "admin/product";
+        return "redirect:";
     }
 
-
-
-
-
-
-
-
+    // update catalog
+    @PostMapping("admin/catalog/update")
+    public Catalog updateCatalog(@ModelAttribute("catalog") Catalog catalog, Model model) {
+        model.addAttribute("catalog", catalogService.getAllCatalog());
+        return catalogService.updateCatalog(catalog);
+//        return  "redirect:/" ;
+    }
 
     @GetMapping("admin/productDetailAdmin")
     public String productDetail(Model model, @RequestParam(name = "productId") String productId) {
@@ -105,10 +100,6 @@ public class AdminController {
 //        model.addAttribute("images", imageDetail);
 //
 //        return "redirect:admin/productDetail";
-
-
         return "redirect:/admin/productDetailAdmin";
     }
-
-
 }

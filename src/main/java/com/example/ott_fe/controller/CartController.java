@@ -52,15 +52,24 @@ public class CartController {
         User user = userService.findByUsername(principal.getName());
         Orders order = user.getCarts().get(0);
         orderDetailService.findByOrderIdAndProductId(order, productId);
-
         return "redirect:/cart";
     }
+
+
 
     @GetMapping("/delete-product")
     public String deleteProductToCart(@RequestParam(name = "productId") Long productId, Principal principal) {
         User user = userService.findByUsername(principal.getName());
         Orders order = user.getCarts().get(0);
         orderDetailService.deleteByOrderIdAndProductId(order, productId);
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/delete-products")
+    public String deleteProductInCarts(@RequestParam(name = "productId") Long productId, Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        Orders order = user.getCarts().get(0);
+        orderDetailService.deleteByOrderIdAndPrductIds(order, productId);
         return "redirect:/cart";
     }
 

@@ -566,7 +566,7 @@
     <a href="product" style="font-size: 25px ; font-weight: 700">Tất cả sản phẩm</a>
 
     <c:forEach var="item" items="${catalog}">
-        <a style="font-size: 22px; margin: 20px 0 ; color: blueviolet;" href="catalog?catalogId=${item.catalogId}">${item.catalogName}
+        <a style="font-size: 22px; margin: 20px 0 ; color: blueviolet;" href="catalog?id=${item.id}">${item.catalogName}
         </a>
     </c:forEach>
 </section>

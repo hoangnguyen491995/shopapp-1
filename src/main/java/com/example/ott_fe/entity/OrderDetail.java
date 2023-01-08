@@ -13,9 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class OrderDetail extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderDetailId;
+
 
     @ManyToOne
     @JoinColumn(name = "orderId", nullable = false)

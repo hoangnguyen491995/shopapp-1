@@ -12,4 +12,7 @@ public interface IOrderDetailService {
 
     void findByOrderIdAndProductId(Orders order, Long productId);
     void deleteByOrderIdAndProductId(Orders order,Long productId);
+
+
+    void deleteByOrderIdAndPrductIds(Orders order,Long productId) ;
 }

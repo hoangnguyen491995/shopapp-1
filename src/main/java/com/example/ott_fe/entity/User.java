@@ -18,9 +18,6 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
 
     private String username;
 

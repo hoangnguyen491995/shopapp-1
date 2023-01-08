@@ -15,9 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Image extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long imageId;
+
 
     private String name;
 

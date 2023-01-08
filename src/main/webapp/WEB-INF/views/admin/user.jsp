@@ -364,23 +364,23 @@
                 <c:forEach var="item" items="${users}">
                     <tbody>
                     <tr>
-                        <td> ${item.userId}</td>
+                        <td> ${item.id}</td>
                         <td> ${item.username}</td>
                         <td> ${item.phone} </td>
                         <td> ${item.email}</td>
                         <td>
-                            <a onclick='return editFormUser("${item.userId}","${item.username}","${item.phone}","${item.email}")'
+                            <a onclick='return editFormUser("${item.id}","${item.username}","${item.phone}","${item.email}")'
                                href="#editEmployeeModal" class="edit"
                                data-toggle="modal"><i
                                     class="material-icons" data-toggle="tooltip"
                                     title="Edit">&#xE254;</i>
                             </a>
 
-                            <a onclick="return deleteForm(${item.userId})" href="#deleteEmployeeModal" class="delete"
+                            <a onclick="return deleteForm(${item.id})" href="#deleteEmployeeModal" class="delete"
                                data-toggle="modal"><i class="material-icons"
                                                       data-toggle="tooltip"
                                                       title="Delete">&#xE872;</i></a>
-                            <a onclick='return DetailFormUser("${item.userId}","${item.username}","${item.phone}","${item.email}")'
+                            <a onclick='return DetailFormUser("${item.id}","${item.username}","${item.phone}","${item.email}")'
                                href="#detailUserEmployeeModal" data-toggle="modal">
                                 Xem chi tiết
                             </a>
@@ -446,7 +446,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID người dùng</label>
-                        <form:input id="editIDUser" path="userId" type="text" class="form-control"/>
+                        <form:input id="editIDUser" path="id" type="text" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label>Tên người dùng</label>
@@ -516,7 +516,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID người dùng : </label>
-                        <label id="UserIdDetail"></label>
+                        <label id="idDetail"></label>
                     </div>
                     <div class="form-group">
                         <label id="nameProduct">Tên người dùng : </label>
@@ -543,11 +543,11 @@
 </div>
 <script>
     function deleteForm(id) {
-        document.getElementById("deleteUser").setAttribute("href", "/admin/user/delete?userId=" + id);
+        document.getElementById("deleteUser").setAttribute("href", "/admin/user/delete?id=" + id);
     }
 
     function DetailFormUser(id, name, phone, email) {
-        document.getElementById("UserIdDetail").innerHTML = id;
+        document.getElementById("idDetail").innerHTML = id;
         document.getElementById("nameUserDetail").innerHTML = name;
         document.getElementById("phoneUserDetail").innerHTML = phone;
         document.getElementById("emailUserDetail").innerHTML = email;

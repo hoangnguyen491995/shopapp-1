@@ -18,9 +18,6 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class Orders extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
